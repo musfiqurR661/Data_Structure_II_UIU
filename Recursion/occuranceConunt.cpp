@@ -2,8 +2,8 @@
 using namespace std;
 
 int countOccurrences(int arr[], int n, int target, int currentIndex = 0) {
-    // Base case: If the currentIndex reaches the end of the array, stop recursion.
-    if (currentIndex == n) {
+    // Base case: If the currentIndex reaches the end of the array or n is non-positive, stop recursion.
+    if (n <= 0 || currentIndex == n) {
         return 0;
     }
 
@@ -23,6 +23,11 @@ int main() {
     cout << "Enter the number of elements in the array: ";
     cin >> n;
 
+    if (n <= 0) {
+        cout << "Invalid array size." << endl;
+        return 1;
+    }
+
     int arr[n];
     cout << "Enter the elements of the array:" << endl;
     for (int i = 0; i < n; i++) {
@@ -37,5 +42,5 @@ int main() {
 
     cout << "The number of occurrences of " << target << " in the array is: " << count << endl;
 
-return 0;
+    return 0;
 }

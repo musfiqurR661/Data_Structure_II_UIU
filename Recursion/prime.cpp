@@ -4,23 +4,28 @@ using namespace std;
 
 bool isPrime(int n) {
     if (n <= 1) {
-        return false;
+       return false;
+       //return true;
     }
     if (n <= 3) {
         return true;
+       // return false;
     }
     if (n % 2 == 0 || n % 3 == 0) {
         return false;
+      //  return true;
     }
     
     int i = 5;
     while (i * i <= n) {
         if (n % i == 0 || n % (i + 2) == 0) {
             return false;
+           // return true;
         }
-        i += 6;
+        i ++;
     }
     
+    //return false;
     return true;
 }
 

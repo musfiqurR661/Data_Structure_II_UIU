@@ -1,6 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Function to preprocess the string (remove spaces, punctuation, convert to lowercase)
+string preprocessString(string str) {
+    string processed;
+    for (char c : str) {
+        if (isalpha(c)) { // Check if the character is an alphabet
+            processed += tolower(c); // Convert to lowercase
+        }
+    }
+    return processed;
+}
+
 bool isPalindrome(string str, int start, int end) {
     if (start >= end) {
         return true;
@@ -11,19 +22,27 @@ bool isPalindrome(string str, int start, int end) {
     return isPalindrome(str, start + 1, end - 1);
 }
 
-int main()
-{
+int main() {
     string a;
-   // cin >> a;
-    getline(cin,a);
-     int length = a.length();
+    getline(cin, a);
 
-    bool result = isPalindrome(a, 0, length - 1);
-    if(result)
-    {
-        cout << "Palindrome"<< endl;
+    // Preprocess the string
+    string processedString = preprocessString(a);
+
+    int length = processedString.length();
+
+    if (length == 0) {
+        cout << "Empty string" << endl;
+        return 0;
     }
-    else{
-        cout << "Not a Palindrome"<< endl;
+
+    bool result = isPalindrome(processedString, 0, length - 1);
+
+    if(result) {
+        cout << "Palindrome" << endl;
+    } else {
+        cout << "Not a Palindrome" << endl;
     }
+
+    return 0;
 }
